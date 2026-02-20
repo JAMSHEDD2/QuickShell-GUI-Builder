@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickShell GUI Builder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <h1>QuickShell GUI Builder</h1>
+      <p>Понятный конструктор для настройки своего бара, плеера, тем и поведения оболочки.</p>
+    </div>
+    <div class="header-actions">
+      <button id="load-demo" class="ghost">Загрузить демо</button>
+      <button id="reset-all" class="danger">Сбросить всё</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Основные настройки</h2>
+      <div class="grid two">
+        <label>
+          Название профиля
+          <input id="profile-name" type="text" placeholder="my-shell" />
+        </label>
+        <label>
+          Тема
+          <select id="theme-mode">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="auto">Auto</option>
+          </select>
+        </label>
+        <label>
+          Шрифт
+          <input id="font-family" type="text" value="JetBrains Mono" />
+        </label>
+        <label>
+          Масштаб интерфейса
+          <input id="ui-scale" type="number" min="0.5" step="0.1" value="1" />
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Бары</h2>
+        <button id="add-bar">+ Добавить bar</button>
+      </div>
+      <div id="bars-list" class="stack"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Интеграция с плеером</h2>
+      <div class="grid two">
+        <label class="switch">
+          <input id="player-enabled" type="checkbox" checked />
+          <span>Включить модуль плеера (MPRIS)</span>
+        </label>
+        <label>
+          Источник данных
+          <select id="player-backend">
+            <option value="mpris">MPRIS</option>
+            <option value="playerctl">playerctl</option>
+            <option value="custom">Custom command</option>
+          </select>
+        </label>
+        <label>
+          Команда обновления статуса
+          <input id="player-command" type="text" value="playerctl metadata --format '{{artist}} - {{title}}'" />
+        </label>
+        <label>
+          Интервал обновления (мс)
+          <input id="player-interval" type="number" min="200" step="100" value="1000" />
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Быстрые действия</h2>
+      <div id="actions-list" class="stack"></div>
+      <button id="add-action" class="ghost">+ Добавить действие</button>
+    </section>
+
+    <section class="panel">
+      <h2>Предпросмотр JSON</h2>
+      <pre id="json-preview"></pre>
+      <div class="row">
+        <button id="copy-json">Скопировать JSON</button>
+        <button id="download-json" class="ghost">Скачать quickshell.config.json</button>
+      </div>
+    </section>
+  </main>
+
+  <template id="bar-template">
+    <article class="card bar-item">
+      <div class="row spread">
+        <h3>Bar</h3>
+        <button class="remove danger">Удалить</button>
+      </div>
+      <div class="grid three">
+        <label>
+          Позиция
+          <select data-field="position">
+            <option value="top">top</option>
+            <option value="bottom">bottom</option>
+            <option value="left">left</option>
+            <option value="right">right</option>
+          </select>
+        </label>
+        <label>
+          Высота / ширина
+          <input data-field="size" type="number" min="16" value="32" />
+        </label>
+        <label>
+          Прозрачность (0-1)
+          <input data-field="opacity" type="number" min="0" max="1" step="0.05" value="0.9" />
+        </label>
+      </div>
+      <label>
+        Виджеты (через запятую)
+        <input data-field="widgets" type="text" value="launcher,workspaces,clock,player,tray" />
+      </label>
+    </article>
+  </template>
+
+  <template id="action-template">
+    <article class="card action-item">
+      <div class="row spread">
+        <h3>Действие</h3>
+        <button class="remove danger">Удалить</button>
+      </div>
+      <div class="grid two">
+        <label>
+          Название
+          <input data-field="name" type="text" placeholder="Open terminal" />
+        </label>
+        <label>
+          Горячая клавиша
+          <input data-field="hotkey" type="text" placeholder="SUPER+ENTER" />
+        </label>
+      </div>
+      <label>
+        Команда
+        <input data-field="command" type="text" placeholder="kitty" />
+      </label>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
