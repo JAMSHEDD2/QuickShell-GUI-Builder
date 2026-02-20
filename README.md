@@ -1,5 +1,5 @@
 # QuickShell GUI Builder
-
+#This is project made with CODEX
 Готовое простое приложение-конструктор для QuickShell:
 
 - настройка базового профиля (тема, шрифт, масштаб);
