@@ -1,0 +1,120 @@
+:root {
+  color-scheme: dark;
+  --bg: #111318;
+  --panel: #1b1f27;
+  --card: #242a35;
+  --text: #f2f4f8;
+  --muted: #98a1b3;
+  --accent: #6ea8fe;
+  --danger: #ff6b6b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #1f2533, var(--bg));
+  color: var(--text);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #2c3342;
+}
+
+.app-header h1 { margin: 0 0 .3rem; }
+.app-header p { margin: 0; color: var(--muted); }
+
+.layout {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1rem 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid #2d3445;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.panel-header, .row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.panel-header { justify-content: space-between; }
+.spread { justify-content: space-between; }
+
+.grid {
+  display: grid;
+  gap: .8rem;
+  margin-top: .8rem;
+}
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.grid.three { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+
+label {
+  display: grid;
+  gap: .35rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+input, select, button {
+  border-radius: 10px;
+  border: 1px solid #3a4254;
+  padding: .6rem .75rem;
+  background: #181d27;
+  color: var(--text);
+  font-size: .95rem;
+}
+
+button {
+  cursor: pointer;
+  background: var(--accent);
+  border-color: transparent;
+  color: #0a1220;
+  font-weight: 700;
+}
+button.ghost {
+  background: transparent;
+  border-color: #4f5a71;
+  color: var(--text);
+}
+button.danger {
+  background: transparent;
+  border-color: #6d3a45;
+  color: #ffb3be;
+}
+
+.stack { display: grid; gap: .8rem; margin-top: .8rem; }
+.card {
+  background: var(--card);
+  border: 1px solid #394055;
+  border-radius: 12px;
+  padding: .8rem;
+}
+
+pre {
+  white-space: pre-wrap;
+  max-height: 360px;
+  overflow: auto;
+  background: #11151d;
+  border: 1px solid #2e3649;
+  border-radius: 10px;
+  padding: .8rem;
+  color: #b9e7ff;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.switch input { width: 18px; height: 18px; }
