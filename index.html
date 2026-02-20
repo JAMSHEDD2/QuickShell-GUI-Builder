@@ -10,24 +10,24 @@
   <header class="app-header">
     <div>
       <h1>QuickShell GUI Builder</h1>
-      <p>Понятный конструктор для настройки своего бара, плеера, тем и поведения оболочки.</p>
+      <p>A clear designer for customizing your bar, player, themes, and shell behavior.</p>
     </div>
     <div class="header-actions">
-      <button id="load-demo" class="ghost">Загрузить демо</button>
-      <button id="reset-all" class="danger">Сбросить всё</button>
+      <button id="load-demo" class="ghost">Download demo</button>
+      <button id="reset-all" class="danger">Reset all</button>
     </div>
   </header>
 
   <main class="layout">
     <section class="panel">
-      <h2>Основные настройки</h2>
+      <h2>Basic settings</h2>
       <div class="grid two">
         <label>
-          Название профиля
+          Name profile
           <input id="profile-name" type="text" placeholder="my-shell" />
         </label>
         <label>
-          Тема
+          Theme
           <select id="theme-mode">
             <option value="dark">Dark</option>
             <option value="light">Light</option>
@@ -35,11 +35,11 @@
           </select>
         </label>
         <label>
-          Шрифт
+          Font
           <input id="font-family" type="text" value="JetBrains Mono" />
         </label>
         <label>
-          Масштаб интерфейса
+          Interface scale
           <input id="ui-scale" type="number" min="0.5" step="0.1" value="1" />
         </label>
       </div>
@@ -47,21 +47,21 @@
 
     <section class="panel">
       <div class="panel-header">
-        <h2>Бары</h2>
-        <button id="add-bar">+ Добавить bar</button>
+        <h2>Bars</h2>
+        <button id="add-bar">+ Add bar</button>
       </div>
       <div id="bars-list" class="stack"></div>
     </section>
 
     <section class="panel">
-      <h2>Интеграция с плеером</h2>
+      <h2>Integration with the player</h2>
       <div class="grid two">
         <label class="switch">
           <input id="player-enabled" type="checkbox" checked />
-          <span>Включить модуль плеера (MPRIS)</span>
+          <span>Enable the player module (MPRIS)</span>
         </label>
         <label>
-          Источник данных
+          Data source
           <select id="player-backend">
             <option value="mpris">MPRIS</option>
             <option value="playerctl">playerctl</option>
@@ -69,28 +69,28 @@
           </select>
         </label>
         <label>
-          Команда обновления статуса
+          Status update command
           <input id="player-command" type="text" value="playerctl metadata --format '{{artist}} - {{title}}'" />
         </label>
         <label>
-          Интервал обновления (мс)
+          Update interval (ms)
           <input id="player-interval" type="number" min="200" step="100" value="1000" />
         </label>
       </div>
     </section>
 
     <section class="panel">
-      <h2>Быстрые действия</h2>
+      <h2>Quick Actions</h2>
       <div id="actions-list" class="stack"></div>
-      <button id="add-action" class="ghost">+ Добавить действие</button>
+      <button id="add-action" class="ghost">+ Add Actions</button>
     </section>
 
     <section class="panel">
-      <h2>Предпросмотр JSON</h2>
+      <h2>Preview JSON</h2>
       <pre id="json-preview"></pre>
       <div class="row">
-        <button id="copy-json">Скопировать JSON</button>
-        <button id="download-json" class="ghost">Скачать quickshell.config.json</button>
+        <button id="copy-json">Copy JSON</button>
+        <button id="download-json" class="ghost">Download quickshell.config.json</button>
       </div>
     </section>
   </main>
@@ -99,11 +99,11 @@
     <article class="card bar-item">
       <div class="row spread">
         <h3>Bar</h3>
-        <button class="remove danger">Удалить</button>
+        <button class="remove danger">Delete</button>
       </div>
       <div class="grid three">
         <label>
-          Позиция
+          Position
           <select data-field="position">
             <option value="top">top</option>
             <option value="bottom">bottom</option>
@@ -112,16 +112,16 @@
           </select>
         </label>
         <label>
-          Высота / ширина
+          Height / width
           <input data-field="size" type="number" min="16" value="32" />
         </label>
         <label>
-          Прозрачность (0-1)
+          Opacity (0-1)
           <input data-field="opacity" type="number" min="0" max="1" step="0.05" value="0.9" />
         </label>
       </div>
       <label>
-        Виджеты (через запятую)
+        Widgets (comma separated)
         <input data-field="widgets" type="text" value="launcher,workspaces,clock,player,tray" />
       </label>
     </article>
@@ -130,21 +130,21 @@
   <template id="action-template">
     <article class="card action-item">
       <div class="row spread">
-        <h3>Действие</h3>
-        <button class="remove danger">Удалить</button>
+        <h3>Actions</h3>
+        <button class="remove danger">Delete</button>
       </div>
       <div class="grid two">
         <label>
-          Название
+          Name
           <input data-field="name" type="text" placeholder="Open terminal" />
         </label>
         <label>
-          Горячая клавиша
+          Hotkey
           <input data-field="hotkey" type="text" placeholder="SUPER+ENTER" />
         </label>
       </div>
       <label>
-        Команда
+        Command
         <input data-field="command" type="text" placeholder="kitty" />
       </label>
     </article>
